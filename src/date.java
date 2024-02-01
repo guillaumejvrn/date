@@ -106,10 +106,10 @@ public class date {
     //creation de la methode numJourAnnee
     public int numJourAnnee() {
         int numJour = 0;
-        for (int i = 1; i < this.getMois(); i++) {
-            numJour += an.nbJoursMois(this.getAnnee())[i - 1];
+        for (int i = 1; i < this.mois; i++) {
+            numJour += an.nbJoursMois(this.annee)[i - 1];
         }
-        numJour += this.getJour();
+        numJour += this.jour;
         return numJour;
     }
 }
