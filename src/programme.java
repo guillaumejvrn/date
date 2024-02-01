@@ -20,11 +20,27 @@ public class programme {
         date dateCouscous = new date(19, 10, 1999);
         date dateCamembert = new date(15, 9, 2010);
         date dateChocolat = new date(11, 16, 2050);
+        date dateFete = new date(1, 1, 2000);
+        date dateFausse = new date(10000, 1 ,2020);
+        date dateFausse2 = new date(29, 2 ,2023);
+        date dateFeteNational = new date(14, 7, 2023);
 
 
         //test de la methode afficher
         dateCouscous.afficher();
         dateCamembert.afficher();
         dateChocolat.afficher();
+
+        //test de la methode egale
+        System.out.println(dateCouscous.egale(dateCamembert));
+
+        //test de la methode afficher
+        System.out.println(dateCouscous.verifier());
+        System.out.println(dateFausse.verifier());
+        System.out.println(dateFausse2.verifier());
+
+        //exemple numJourAnnee
+        System.out.println(dateFeteNational.numJourAnnee());
+
     }
 }
