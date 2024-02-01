@@ -19,10 +19,10 @@ public class programme {
         //creation de trois obj
         date dateCouscous = new date(19, 10, 1999);
         date dateCamembert = new date(15, 9, 2010);
-        date dateChocolat = new date(11, 16, 2050);
+        date dateChocolat = new date(11, 10, 2050);
         date dateFete = new date(1, 1, 2000);
-        date dateFausse = new date(10000, 1 ,2020);
-        date dateFausse2 = new date(29, 2 ,2023);
+        date dateFausse = new date(10, 1 ,2020);
+        date dateFausse2 = new date(28, 2 ,2023);
         date dateFeteNational = new date(14, 7, 2023);
 
 

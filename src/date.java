@@ -7,13 +7,15 @@ public class date {
 
     //constructeur des attributs jour, mois et annee
     public date(int jour, int mois, int annee) {
-        if(jour >= 1 && jour <= an.nbJoursMois(annee)[mois - 1]) {
-            this.jour = jour;
-        }
-        if (mois >= 1 && mois <= 12) {
+        if (mois >= 1 && mois <= 12 && jour >= 1 && jour <= an.nbJoursMois(annee)[mois - 1]) {
             this.mois = mois;
+            this.jour = jour;
+            this.annee = annee;
+        } else {
+            System.out.println("Erreur : le mois n'est pas valide");
+            System.exit(1);
         }
-        this.annee = annee;
+
     }
 
 
