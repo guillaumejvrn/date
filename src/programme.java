@@ -42,5 +42,19 @@ public class programme {
         //exemple numJourAnnee
         System.out.println(dateFeteNational.numJourAnnee());
 
+
+        //creation d'un objet de type date
+        date date2 = new date(1, 1, 2000);
+        date presqueAujourdhui = new date(8, 2 ,2024);
+
+
+        //test de la methode nomJourSemaine
+        System.out.println(date2.nomJourSemaine());
+        System.out.println(presqueAujourdhui.nomJourSemaine());
+
+        //test de la methode comparer
+        date premiereDate = new date(1, 1, 2000);
+        date deuxiemeDate = new date(1, 1, 2001);
+        System.out.println(comparer(premiereDate, deuxiemeDate));
     }
 }

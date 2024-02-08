@@ -114,4 +114,57 @@ public class date {
         numJour += this.jour;
         return numJour;
     }
+    //surcharge du constructeur de la classe date de telle sorte qu’il prenne pour arguments
+    //le numéro du jour dans l’année et l’année.
+    public date(int numJour, int annee) {
+        this.annee = annee;
+        int i = 1;
+        while (numJour > an.nbJoursMois(annee)[i - 1]) {
+            numJour -= an.nbJoursMois(annee)[i - 1];
+            i++;
+        }
+        this.mois = i;
+        this.jour = numJour;
+    }
+
+
+    //creation de la methode numJourSemaine en utilisant l'algorithme de mike keith
+    public int numJourSemaine() {
+        int a = (14 - this.mois) / 12;
+        int y = this.annee - a;
+        int m = this.mois + 12 * a - 2;
+        int j = (this.jour + y + y / 4 - y / 100 + y / 400 + (31 * m) / 12) % 7;
+        return j;
+    }
+    //creation d'une methode nomJourSemaine qui retourne le nom du jour de la semaine en francais
+    public String nomJourSemaine() {
+        String[] jours = {"Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"};
+        return jours[numJourSemaine()];
+    }
+
+
+    //creation de la methode comparer qui compare l'instance de la classe date avec un objet de type date passe en argument
+    public static int comparer(date date1, date date2) {
+        if (date1.getAnnee() < date2.getAnnee()) {
+            return -1;
+        } else if (date1.getAnnee() > date2.getAnnee()) {
+            return 1;
+        } else {
+            if (date1.getMois() < date2.getMois()) {
+                return -1;
+            } else if (date1.getMois() > date2.getMois()) {
+                return 1;
+            } else {
+                if (date1.getJour() < date2.getJour()) {
+                    return -1;
+                } else if (date1.getJour() > date2.getJour()) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        }
+    }
+
+
 }
