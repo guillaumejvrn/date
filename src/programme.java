@@ -55,6 +55,7 @@ public class programme {
         //test de la methode comparer
         date premiereDate = new date(1, 1, 2000);
         date deuxiemeDate = new date(1, 1, 2001);
+        date troisiemeDate = new date(3, 1, 2010);
         System.out.println("comparaison de deux dates");
         System.out.println(premiereDate.comparer(deuxiemeDate));
         System.out.println(deuxiemeDate.comparer(premiereDate));
@@ -64,6 +65,9 @@ public class programme {
         System.out.println(deuxiemeDate.apres(premiereDate));
         System.out.println(premiereDate.egal(premiereDate));
 
-        System.out.println(premiereDate.min(DeuxiemeDate));
+
+
+        premiereDate.min(deuxiemeDate).afficher();
+        troisiemeDate.max(deuxiemeDate).afficher();
     }
 }

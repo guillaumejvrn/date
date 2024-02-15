@@ -191,8 +191,7 @@ public class date {
         }
     }
 
-    //méthode min() qui retourne la date qui précède l’autre, entre une
-    //instance de la classe Date et une date passée en argument.
+    //méthode min()
     public date min(date date) {
         if (this.avant(date)) {
             return this;
@@ -209,6 +208,17 @@ public class date {
         } else {
             return date;
         }
+    }
+
+    // methode difference
+    public int difference(date date) {
+        int diff = 0;
+        if (this.comparer(date) == 0) {
+            return 0;
+        } else if (this.comparer(date) == -1) {
+            diff = diff - 1;
+        }
+        return diff;
     }
 
 }
