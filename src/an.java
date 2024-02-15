@@ -7,14 +7,7 @@ public class an {
 
     //creation d'une methode nbJoursAnnee
     public static int nbJoursAnnee(int annee) {
-        //si l'annee est bissextile
-        if (estBissextile(annee)) {
-            //alors l'annee a 366 jours
-            return 366;
-        } else {
-            //sinon l'annee a 365 jours
-            return 365;
-        }
+        return estBissextile(annee) ? 366 : 365;
     }
 
 
