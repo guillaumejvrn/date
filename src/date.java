@@ -5,19 +5,6 @@ public class date {
     private int annee;
 
 
-    //constructeur des attributs jour, mois et annee
-    public date(int jour, int mois, int annee) {
-        if (mois >= 1 && mois <= 12 && jour >= 1 && jour <= an.nbJoursMois(annee)[mois - 1]) {
-            this.mois = mois;
-            this.jour = jour;
-            this.annee = annee;
-        } else {
-            System.out.println("Erreur : le mois n'est pas valide");
-            System.exit(1);
-        }
-
-    }
-
 
     //initioalisation des attributs jour, mois et annee a zero
     public date() {
@@ -47,25 +34,22 @@ public class date {
             if (jour >= 1 && jour <= an.nbJoursMois(this.annee)[this.mois - 1]) {
                 this.jour = jour;
             }
+        }else {
+            System.out.println("Erreur : le mois n'a pas été affecté");
+            System.exit(1);
         }
     }
     public void setMois(int mois) {
         if (mois >= 1 && mois <= 12) {
             this.mois = mois;
+        } else {
+            System.out.println("Erreur : le mois n'est pas valide");
+            System.exit(1);
         }
     }
     public void setAnnee(int annee) {
         this.annee = annee;
     }
-
-
-    //creation d'un deuxieme constructeur avec paramètres afin d’initialiser les valeurs des 3 attributs.
-    /*
-    public date(int jour, int mois, int annee) {
-        this.jour = jour;
-        this.mois = mois;
-        this.annee = annee;
-    }*/
 
 
     //creation d'une methode afficher
@@ -89,24 +73,17 @@ public class date {
     }
 
 
-    //methode egale
-    public boolean egale(date date) {
-        if (this.jour == date.jour && this.mois == date.mois && this.annee == date.annee) {
-            return true;
-        } else {
-            return false;
-        }
+    //methode egal
+    /*
+    public boolean egal(date date) {
+        return this.jour == date.jour && this.mois == date.mois && this.annee == date.annee;
     }
-
+    */
 
 
     //methode verifier la validité d’une date
     public boolean verifier() {
-        if (this.getJour() >= 1 && this.getJour() <= an.nbJoursMois(annee)[this.getMois() - 1] && this.getMois() >= 1 && this.getMois() <= 12) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.getMois() >= 1 && this.getMois() <= 12 && this.getJour() >= 1 && this.getJour() <= an.nbJoursMois(annee)[this.getMois() - 1];
     }
 
 
@@ -116,9 +93,17 @@ public class date {
         for (int i = 1; i < this.mois; i++) {
             numJour += an.nbJoursMois(this.annee)[i - 1];
         }
-        numJour += this.jour;
-        return numJour;
+        return numJour + this.jour;
     }
+
+
+    //constructeur des attributs jour, mois et annee
+    public date(int jour, int mois, int annee) {
+            this.setMois(mois);
+            this.setJour(jour);
+            this.setAnnee(annee);
+    }
+
     //surcharge du constructeur de la classe date de telle sorte qu’il prenne pour arguments
     //le numéro du jour dans l’année et l’année.
     public date(int numJour, int annee) {
@@ -135,11 +120,9 @@ public class date {
 
     //creation de la methode numJourSemaine en utilisant l'algorithme de mike keith
     public int numJourSemaine() {
-        int a = (14 - this.mois) / 12;
-        int y = this.annee - a;
-        int m = this.mois + 12 * a - 2;
-        int j = (this.jour + y + y / 4 - y / 100 + y / 400 + (31 * m) / 12) % 7;
-        return j;
+        int y = this.annee - ((14 - this.mois) / 12);
+        int m = this.mois + 12 * ((14 - this.mois) / 12) - 2;
+        return (this.jour + y + y / 4 - y / 100 + y / 400 + (31 * m) / 12) % 7;
     }
     //creation d'une methode nomJourSemaine qui retourne le nom du jour de la semaine en francais
     public String nomJourSemaine() {
@@ -173,74 +156,37 @@ public class date {
 
     //creation de la methode avant()
     public boolean avant(date date) {
-        if (this.comparer(date) == -1) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.comparer(date) == -1;
     }
 
     public boolean apres(date date) {
-        if (this.comparer(date) == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.comparer(date) == 1;
     }
 
-    public boolean egal(date date) {
-        if (this.comparer(date) == 0) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean egale(date date) {
+        return this.comparer(date) == 0;
     }
 
     //méthode min()
     public date min(date date) {
-        if (this.avant(date)) {
-            return this;
-        } else {
-            return date;
-        }
+        return this.avant(date) ? this : date;
     }
 
     //methode max
 
     public date max(date date) {
-        if (this.apres(date)) {
-            return this;
-        } else {
-            return date;
-        }
+        return  this.apres(date) ? this : date;
     }
 
     // méthode difference() qui retourne le nombre de jours écoulés entre
     //une instance de la classe Date est une date passée en argument.
     public int difference(date date) {
         int difference = 0;
-        if (this.comparer(date) == -1) {
-            for (int i = this.annee; i < date.annee; i++) {
-                if (an.estBissextile(i)) {
-                    difference += 366;
-                } else {
-                    difference += 365;
-                }
-            }
-            difference += date.numJourAnnee() - this.numJourAnnee();
-        } else if (this.comparer(date) == 1) {
-            for (int i = date.annee; i < this.annee; i++) {
-                if (an.estBissextile(i)) {
-                    difference += 366;
-                } else {
-                    difference += 365;
-                }
-            }
-            difference += this.numJourAnnee() - date.numJourAnnee();
+        for (int i = this.min(date).annee; i < this.max(date).annee; i++) {
+            difference += an.nbJoursAnnee(i);
         }
-        return difference;
+        return difference + this.max(date).numJourAnnee() - this.min(date).numJourAnnee();
     }
-
 
     public static String nomMois(int mois){
         String[] moisFr = {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"};

@@ -63,7 +63,7 @@ public class programme {
         //test de la methode avant apres
         System.out.println(premiereDate.avant(deuxiemeDate));
         System.out.println(deuxiemeDate.apres(premiereDate));
-        System.out.println(premiereDate.egal(premiereDate));
+        System.out.println(premiereDate.egale(premiereDate));
 
 
 
@@ -75,10 +75,19 @@ public class programme {
         date.nomMois(4);
         date dateDeValeur = new date(13, 2, 2024);
         date dateIncroyable = new date(15, 2, 2024);
+
+
+
         System.out.println(dateDeValeur.difference(dateIncroyable));
         System.out.println(dateIncroyable.difference(dateDeValeur));
 
         dateIncroyable.afficher();
 
+        date dateDeValeur2 = new date(366, 2024);
+
+        date dateDEDebut = new date(11,11,2021);
+        date dateDEFIN = new date(15,02,2024);
+        System.out.println(dateDEDebut.difference(dateDEFIN));
+        dateDeValeur2.afficher();
     }
 }
