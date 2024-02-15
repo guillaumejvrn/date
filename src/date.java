@@ -144,20 +144,20 @@ public class date {
 
 
     //creation de la methode comparer qui compare l'instance de la classe date avec un objet de type date passe en argument
-    public static int comparer(date date1, date date2) {
-        if (date1.getAnnee() < date2.getAnnee()) {
+    public int comparer(date date) {
+        if (this.getAnnee() < date.getAnnee()) {
             return -1;
-        } else if (date1.getAnnee() > date2.getAnnee()) {
+        } else if (this.getAnnee() > date.getAnnee()) {
             return 1;
         } else {
-            if (date1.getMois() < date2.getMois()) {
+            if (this.getMois() < date.getMois()) {
                 return -1;
-            } else if (date1.getMois() > date2.getMois()) {
+            } else if (this.getMois() > date.getMois()) {
                 return 1;
             } else {
-                if (date1.getJour() < date2.getJour()) {
+                if (this.getJour() < date.getJour()) {
                     return -1;
-                } else if (date1.getJour() > date2.getJour()) {
+                } else if (this.getJour() > date.getJour()) {
                     return 1;
                 } else {
                     return 0;
@@ -166,5 +166,49 @@ public class date {
         }
     }
 
+    //creation de la methode avant()
+    public boolean avant(date date) {
+        if (this.comparer(date) == -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean apres(date date) {
+        if (this.comparer(date) == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean egal(date date) {
+        if (this.comparer(date) == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //méthode min() qui retourne la date qui précède l’autre, entre une
+    //instance de la classe Date et une date passée en argument.
+    public date min(date date) {
+        if (this.avant(date)) {
+            return this;
+        } else {
+            return date;
+        }
+    }
+
+    //methode max
+
+    public date max(date date) {
+        if (this.apres(date)) {
+            return this;
+        } else {
+            return date;
+        }
+    }
 
 }
