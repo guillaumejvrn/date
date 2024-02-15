@@ -210,15 +210,22 @@ public class date {
         }
     }
 
-    // methode difference
+    // méthode difference() qui retourne le nombre de jours écoulés entre
+    //une instance de la classe Date est une date passée en argument.
     public int difference(date date) {
-        int diff = 0;
-        if (this.comparer(date) == 0) {
-            return 0;
-        } else if (this.comparer(date) == -1) {
-            diff = diff - 1;
+        int difference = 0;
+        if (this.comparer(date) == -1) {
+            while (this.comparer(date) != 0) {
+                this.jour++;
+                difference++;
+            }
+        } else {
+            while (this.comparer(date) != 0) {
+                this.jour--;
+                difference++;
+            }
         }
-        return diff;
+        return difference;
     }
 
 }

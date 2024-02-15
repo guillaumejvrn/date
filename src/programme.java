@@ -69,5 +69,9 @@ public class programme {
 
         premiereDate.min(deuxiemeDate).afficher();
         troisiemeDate.max(deuxiemeDate).afficher();
+
+        premiereDate.difference(deuxiemeDate).afficher();
+
+
     }
 }
