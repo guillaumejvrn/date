@@ -70,8 +70,15 @@ public class programme {
         premiereDate.min(deuxiemeDate).afficher();
         troisiemeDate.max(deuxiemeDate).afficher();
 
-        premiereDate.difference(deuxiemeDate).afficher();
 
+        date.nomMois(2);
+        date.nomMois(4);
+        date dateDeValeur = new date(13, 2, 2024);
+        date dateIncroyable = new date(15, 2, 2024);
+        System.out.println(dateDeValeur.difference(dateIncroyable));
+        System.out.println(dateIncroyable.difference(dateDeValeur));
+
+        dateIncroyable.afficher();
 
     }
 }

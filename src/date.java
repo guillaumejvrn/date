@@ -70,7 +70,12 @@ public class date {
 
     //creation d'une methode afficher
     public void afficher() {
-        System.out.println(this.jour + "/" + this.mois + "/" + this.annee);
+        //System.out.println(this.jour + "/" + this.mois + "/" + this.annee);
+        String afficherJour = nomJour(this.numJourSemaine());
+        String afficherMois = nomMois(this.mois);
+         System.out.println(afficherJour + " " + this.jour + " " + afficherMois + " " + this.annee);
+        System.out.println();
+
         if(jourDeLAn().egale(this)) {
             System.out.println("C'est le jour de l'an");
         }
@@ -215,17 +220,36 @@ public class date {
     public int difference(date date) {
         int difference = 0;
         if (this.comparer(date) == -1) {
-            while (this.comparer(date) != 0) {
-                this.jour++;
-                difference++;
+            for (int i = this.annee; i < date.annee; i++) {
+                if (an.estBissextile(i)) {
+                    difference += 366;
+                } else {
+                    difference += 365;
+                }
             }
-        } else {
-            while (this.comparer(date) != 0) {
-                this.jour--;
-                difference++;
+            difference += date.numJourAnnee() - this.numJourAnnee();
+        } else if (this.comparer(date) == 1) {
+            for (int i = date.annee; i < this.annee; i++) {
+                if (an.estBissextile(i)) {
+                    difference += 366;
+                } else {
+                    difference += 365;
+                }
             }
+            difference += this.numJourAnnee() - date.numJourAnnee();
         }
         return difference;
     }
 
+
+    public static String nomMois(int mois){
+        String[] moisFr = {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"};
+        return moisFr[mois-1];
+    }
+
+    public static String nomJour(int jour){
+
+        String[] jours = {"Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"};
+        return jours[(jour)];
+    }
 }
