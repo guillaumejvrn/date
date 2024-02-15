@@ -55,6 +55,6 @@ public class programme {
         //test de la methode comparer
         date premiereDate = new date(1, 1, 2000);
         date deuxiemeDate = new date(1, 1, 2001);
-        System.out.println(comparer(premiereDate, deuxiemeDate));
+        System.out.println(date.comparer(premiereDate, deuxiemeDate));
     }
 }
