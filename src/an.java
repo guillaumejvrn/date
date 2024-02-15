@@ -1,14 +1,7 @@
 public class an {
     //creation d'une methode estBissextile
     public static boolean estBissextile(int annee) {
-        //si l'annee est divisible par 4 et non divisible par 100 ou divisible par 400
-        if ((annee % 4 == 0 && annee % 100 != 0) || annee % 400 == 0) {
-            //alors l'annee est bissextile
-            return true;
-        } else {
-            //sinon l'annee n'est pas bissextile
-            return false;
-        }
+        return (annee % 4 == 0 && annee % 100 != 0) || annee % 400 == 0 ;
     }
 
 
