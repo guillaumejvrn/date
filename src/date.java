@@ -1,4 +1,6 @@
-public class date {
+import java.util.Date;
+
+public class date implements Comparable<date> {
     //initialisation des attributs
     private int jour;
     private int mois;
@@ -53,16 +55,16 @@ public class date {
 
 
     //creation d'une methode afficher
-    public void afficher() {
+    public String toString() {
         //System.out.println(this.jour + "/" + this.mois + "/" + this.annee);
         String afficherJour = nomJour(this.numJourSemaine());
         String afficherMois = nomMois(this.mois);
-         System.out.println(afficherJour + " " + this.jour + " " + afficherMois + " " + this.annee);
-        System.out.println();
+        //if(jourDeLAn().egale(this)) {
+        //    System.out.println("C'est le jour de l'an");
+        //}
 
-        if(jourDeLAn().egale(this)) {
-            System.out.println("C'est le jour de l'an");
-        }
+        String resultat = afficherJour + " " + String.format("%02d", this.jour) + " " + afficherMois + " " + this.annee;
+        return resultat;
     }
 
 
@@ -198,4 +200,29 @@ public class date {
         String[] jours = {"Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"};
         return jours[(jour)];
     }
+
+    @Override
+    public int compareTo(date date) {
+        if (this.getAnnee() < date.getAnnee()) {
+            return -1;
+        } else if (this.getAnnee() > date.getAnnee()) {
+            return 1;
+        } else {
+            if (this.getMois() < date.getMois()) {
+                return -1;
+            } else if (this.getMois() > date.getMois()) {
+                return 1;
+            } else {
+                if (this.getJour() < date.getJour()) {
+                    return -1;
+                } else if (this.getJour() > date.getJour()) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        }
+    }
+
+
 }

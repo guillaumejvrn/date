@@ -1,5 +1,11 @@
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 public class programme {
     public static void main(String[] args) {
+
+        /*
         //initialisation des objets date1
         date date1 = new date(1, 1, 2000);
 
@@ -27,9 +33,9 @@ public class programme {
 
 
         //test de la methode afficher
-        dateCouscous.afficher();
-        dateCamembert.afficher();
-        dateChocolat.afficher();
+        dateCouscous.toString();
+        dateCamembert.toString();
+        dateChocolat.toString();
 
         //test de la methode egale
         System.out.println(dateCouscous.egale(dateCamembert));
@@ -67,8 +73,8 @@ public class programme {
 
 
 
-        premiereDate.min(deuxiemeDate).afficher();
-        troisiemeDate.max(deuxiemeDate).afficher();
+        premiereDate.min(deuxiemeDate).toString();
+        troisiemeDate.max(deuxiemeDate).toString();
 
 
         date.nomMois(2);
@@ -81,13 +87,52 @@ public class programme {
         System.out.println(dateDeValeur.difference(dateIncroyable));
         System.out.println(dateIncroyable.difference(dateDeValeur));
 
-        dateIncroyable.afficher();
+        dateIncroyable.toString();
 
         date dateDeValeur2 = new date(366, 2024);
 
         date dateDEDebut = new date(11,11,2021);
         date dateDEFIN = new date(15,02,2024);
         System.out.println(dateDEDebut.difference(dateDEFIN));
-        dateDeValeur2.afficher();
+        dateDeValeur2.toString();
+        */
+
+        //creation d'un objet de type evenement
+        evenement rotiDePorc = new evenement(1, 1, 1900, "nouvel an");
+        evenement nouvelAn = new evenement(1, 1, 2000, "nouvel an");
+        evenement noel = new evenement(25, 12, 2000, "noel");
+        evenement frites = new evenement(19, 7, 2200, "frites");
+        date steak = new date(19, 7, 2400);
+        evenement carnaval = new evenement(20, 7, 2400, "carnaval");
+
+        System.out.println(nouvelAn.toString());
+        System.out.println(rotiDePorc.egale(nouvelAn));
+        System.out.println(rotiDePorc.egale(noel));
+
+
+        System.out.println("comparaison");
+        System.out.println(rotiDePorc.compareTo(steak));
+        System.out.println(frites.compareTo(rotiDePorc));
+        System.out.println(steak.compareTo(steak));
+
+
+
+        //collection de dates qui s'appelle les dates
+        ArrayList<date> lesDates = new ArrayList<date>();
+
+        //deux evemenement au collection lesDates
+        lesDates.add(frites);
+        lesDates.add(carnaval);
+        lesDates.add(steak);
+        lesDates.add(rotiDePorc);
+        lesDates.add(nouvelAn);
+
+
+
+
+        Collections.sort(lesDates);
+        for (date uneDate : lesDates) {
+            System.out.println(uneDate);
+        }
     }
 }
